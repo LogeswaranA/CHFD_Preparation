@@ -2,6 +2,9 @@
 
 CHFD v2.2 - Node.js + Node.js
 
+## NOTE
+This is my self learning notes for CHFD Exam preparation. So please do not take this as direction for your CHFD. May be, this can help you out to get some idea how the exam would be. Take a best shot.. All the best..
+
 ## CURRICULUM
 ### Identity Management 7%                         
 Instantiate a wallet
