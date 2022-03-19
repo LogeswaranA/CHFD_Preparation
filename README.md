@@ -21,6 +21,16 @@ network_config.json
 ```
 
 Instantiate and connect to a gateway
+```shell script
+
+    const gateway = new Gateway();
+
+    await gateway.connect(ccp, {
+        wallet,
+        identity: request.user.userName,
+        discovery: { enabled: true, asLocalhost: false } 
+    });
+```
 
 Access networks and contracts                          
 
