@@ -7,7 +7,6 @@ exports.invokeTransaction = async (cp, channelName, chaincodeName, functionName,
     
     let org = request.user.org;
 
-    console.log("tetingigigg",request.user.org,request.user)
     let num = Number(org.match(/\d/g).join(""));
 
     const ccp = getCCP(num);
@@ -23,7 +22,7 @@ exports.invokeTransaction = async (cp, channelName, chaincodeName, functionName,
     await gateway.connect(ccp, {
         wallet,
         identity: request.user.userName,
-        discovery: { enabled: true, asLocalhost: false } // using asLocalhost as this gateway is using a fabric network deployed locally
+        discovery: { enabled: true, asLocalhost: false } 
     });
 
     // Build a network instance based on the channel where the smart contract is deployed

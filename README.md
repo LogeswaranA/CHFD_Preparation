@@ -23,6 +23,12 @@ network_config.json
 Instantiate and connect to a gateway
 ```shell script
 
+    let org = request.user.org;
+
+    let num = Number(org.match(/\d/g).join(""));
+
+    const ccp = getCCP(num);
+    
     const gateway = new Gateway();
 
     await gateway.connect(ccp, {
