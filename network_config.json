@@ -1,0 +1,434 @@
+{
+    "name": "theexample2",
+    "description": "theexample2",
+    "version": "1.0.0",
+    "license": "Apache-2.0",
+    "client": {
+        "organization": "org1",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "7000"
+                }
+            }
+        }
+    },
+    "request-timeout":7000,
+    "channels": {
+        "vaccinechannel": {
+            "orderers": [
+                "orderer1.orderer.example.com",
+                "orderer2.orderer.example.com",
+                "orderer3.orderer.example.com",
+                "orderer4.orderer.example.com",
+                "orderer5.orderer.example.com"
+            ],
+            "peers": {
+                "peer0.org1.example.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "exampleQuery": true,
+                    "eventSource": true
+                },
+                "peer1.org1.example.com": {
+                    "endorsingPeer": false,
+                    "chaincodeQuery": true,
+                    "exampleQuery": true,
+                    "eventSource": false
+                },
+                "peer0.org2.example.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "exampleQuery": true,
+                    "eventSource": true
+                },
+                "peer1.org2.example.com": {
+                    "endorsingPeer": false,
+                    "chaincodeQuery": true,
+                    "exampleQuery": true,
+                    "eventSource": false
+                },
+                "peer0.org3.example.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "exampleQuery": true,
+                    "eventSource": true
+                },
+                "peer1.org3.example.com": {
+                    "endorsingPeer": false,
+                    "chaincodeQuery": true,
+                    "exampleQuery": true,
+                    "eventSource": false
+                },
+                "peer0.org4.example.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "exampleQuery": true,
+                    "eventSource": true
+                },
+                "peer1.org4.example.com": {
+                    "endorsingPeer": false,
+                    "chaincodeQuery": true,
+                    "exampleQuery": true,
+                    "eventSource": false
+                },
+                "peer0.org5.example.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "exampleQuery": true,
+                    "eventSource": true
+                },
+                "peer1.org5.example.com": {
+                    "endorsingPeer": false,
+                    "chaincodeQuery": true,
+                    "exampleQuery": true,
+                    "eventSource": false
+                }
+            },
+            "chaincodes": [
+                "Productcc:v1.0",
+                "regioncc:v1.0",
+                "alertcc:v1.0"
+            ]
+        }
+    },
+    "organizations": {
+        "org1": {
+            "mspid": "org1MSP",
+            "certificateAuthorities": [
+                "ca.org1.example.com"
+            ],
+            "adminPrivateKey": {
+                "path": "./crypto/org1/admin/msp/keystore/priv_sk"
+            },
+            "signedCert": {
+                "path": "./crypto/org1/admin/msp/signcerts/Admin@org1.example.com-cert.pem"
+            },
+            "peers": [
+                "peer0.org1.example.com",
+                "peer1.org1.example.com"
+            ]
+        },
+        "org2": {
+            "mspid": "org2MSP",
+            "certificateAuthorities": [
+                "ca.org2.example.com"
+            ],
+            "adminPrivateKey": {
+                "path": "./crypto/org2/admin/msp/keystore/priv_sk"
+            },
+            "signedCert": {
+                "path": "./crypto/org2/admin/msp/signcerts/Admin@org2.example.com-cert.pem"
+            },
+            "peers": [
+                "peer0.org2.example.com",
+                "peer1.org2.example.com"
+            ]
+        },
+        "org3": {
+            "mspid": "org3MSP",
+            "certificateAuthorities": [
+                "ca.org3.example.com"
+            ],
+            "adminPrivateKey": {
+                "path": "./crypto/org3/admin/msp/keystore/priv_sk"
+            },
+            "signedCert": {
+                "path": "./crypto/org3/admin/msp/signcerts/Admin@org3.example.com-cert.pem"
+            },
+            "peers": [
+                "peer0.org3.example.com",
+                "peer1.org3.example.com"
+            ]
+        },
+        "org4": {
+            "mspid": "org4MSP",
+            "certificateAuthorities": [
+                "ca.org4.example.com"
+            ],
+            "adminPrivateKey": {
+                "path": "./crypto/org4/admin/msp/keystore/priv_sk"
+            },
+            "signedCert": {
+                "path": "./crypto/org4/admin/msp/signcerts/Admin@org4.example.com-cert.pem"
+            },
+            "peers": [
+                "peer0.org4.example.com",
+                "peer1.org4.example.com"
+            ]
+        },
+        "org5": {
+            "mspid": "org5MSP",
+            "certificateAuthorities": [
+                "ca.org5.example.com"
+            ],
+            "adminPrivateKey": {
+                "path": "./crypto/org5/admin/msp/keystore/priv_sk"
+            },
+            "signedCert": {
+                "path": "./crypto/org5/admin/msp/signcerts/Admin@org5.example.com-cert.pem"
+            },
+            "peers": [
+                "peer0.org5.example.com",
+                "peer1.org5.example.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.org1.example.com": {
+            "url": "grpcs://peer0.org1.example.com:7051",
+            "eventUrl": "grpcs://peer0.org1.example.com:7053",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org1.example.com",
+                "hostnameOverride": "peer0.org1.example.com",
+                "request-timeout": 12000,
+                "grpc.keepalive_time_ms": 600000
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org1/tls/peer0/ca.crt"
+            }
+        },
+        "peer1.org1.example.com": {
+            "url": "grpcs://peer1.org1.example.com:8051",
+            "eventUrl": "grpcs://peer1.org1.example.com:8053",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.org1.example.com",
+                "hostnameOverride": "peer1.org1.example.com",
+                "request-timeout": 12000,
+                "grpc.keepalive_time_ms": 600000
+
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org1/tls/peer1/ca.crt"
+            }
+        },
+        "peer0.org2.example.com": {
+            "url": "grpcs://peer0.org2.example.com:9051",
+            "eventUrl": "grpcs://peer0.org2.example.com:9053",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org2.example.com",
+                "hostnameOverride": "peer0.org2.example.com",
+                "request-timeout": 12000,
+                "grpc.keepalive_time_ms": 600000                
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org2/tls/peer0/ca.crt"
+            }
+        },
+        "peer1.org2.example.com": {
+            "url": "grpcs://peer0.org2.example.com:10051",
+            "eventUrl": "grpcs://peer0.org2.example.com:10053",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.org2.example.com",
+                "hostnameOverride": "peer1.org2.example.com",
+                "request-timeout": 12000,
+                "grpc.keepalive_time_ms": 600000                   
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org2/tls/peer1/ca.crt"
+            }
+        },
+        "peer0.org3.example.com": {
+            "url": "grpcs://peer0.org3.example.com:11051",
+            "eventUrl": "grpcs://peer0.org3.example.com:11053",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org3.example.com",
+                "hostnameOverride": "peer0.org3.example.com",
+                "request-timeout": 12000,
+                "grpc.keepalive_time_ms": 600000                
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org3/tls/peer0/ca.crt"
+            }
+        },
+        "peer1.org3.example.com": {
+            "url": "grpcs://peer1.org3.example.com:12051",
+            "eventUrl": "grpcs://peer1.org3.example.com:12053",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.org3.example.com",
+                "hostnameOverride": "peer1.org3.example.com",
+                "request-timeout": 12000,
+                "grpc.keepalive_time_ms": 600000                  
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org3/tls/peer1/ca.crt"
+            }
+        },
+        "peer0.org4.example.com": {
+            "url": "grpcs://peer0.org4.example.com:13051",
+            "eventUrl": "grpcs://peer0.org4.example.com:13053",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org4.example.com",
+                "hostnameOverride": "peer0.org4.example.com",
+                "request-timeout": 12000,
+                "grpc.keepalive_time_ms": 600000                
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org4/tls/peer0/ca.crt"
+            }
+        },
+        "peer1.org4.example.com": {
+            "url": "grpcs://peer0.org4.example.com:14051",
+            "eventUrl": "grpcs://peer0.org4.example.com:14053",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.org4.example.com",
+                "hostnameOverride": "peer1.org4.example.com",
+                "request-timeout": 12000,
+                "grpc.keepalive_time_ms": 600000                
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org4/tls/peer1/ca.crt"
+            }
+        },
+        "peer0.org5.example.com": {
+            "url": "grpcs://peer0.org5.example.com:15051",
+            "eventUrl": "grpcs://peer0.org5.example.com:15053",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org5.example.com",
+                "hostnameOverride": "peer0.org5.example.com",
+                "request-timeout": 12000,
+                "grpc.keepalive_time_ms": 600000                
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org5/tls/peer0/ca.crt"
+            }
+        },
+        "peer1.org5.example.com": {
+            "url": "grpcs://peer1.org5.example.com:16051",
+            "eventUrl": "grpcs://peer1.org5.example.com:16053",
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.org5.example.com",
+                "hostnameOverride": "peer1.org5.example.com",
+                "request-timeout": 12000,
+                "grpc.keepalive_time_ms": 600000                
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org5/tls/peer1/ca.crt"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca.org1.example.com": {
+            "url": "https://ca.org1.example.com:7054",
+            "httpOptions": {
+                "verify": false
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org1/tls/ca/ca.org1.example.com-cert.pem"
+            },
+            "registrar": [
+                {
+                    "enrollId": "Org1examplev2",
+                    "enrollSecret": "example123@"
+                }
+            ]
+        },
+        "ca.org2.example.com": {
+            "url": "https://ca.org1.example.com:8054",
+            "httpOptions": {
+                "verify": false
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org2/tls/ca/ca.org2.example.com-cert.pem"
+            },
+            "registrar": [
+                {
+                    "enrollId": "Org2examplev2",
+                    "enrollSecret": "example123@"
+                }
+            ]
+        },
+        "ca.org3.example.com": {
+            "url": "https://ca.org1.example.com:9054",
+            "httpOptions": {
+                "verify": false
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org3/tls/ca/ca.org3.example.com-cert.pem"
+            },
+            "registrar": [
+                {
+                    "enrollId": "Org3examplev2",
+                    "enrollSecret": "example123@"
+                }
+            ]
+        },
+        "ca.org4.example.com": {
+            "url": "https://ca.org1.example.com:10054",
+            "httpOptions": {
+                "verify": false
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org4/tls/ca/ca.org4.example.com-cert.pem"
+            },
+            "registrar": [
+                {
+                    "enrollId": "Org4examplev2",
+                    "enrollSecret": "example123@"
+                }
+            ]
+        },
+        "ca.org5.example.com": {
+            "url": "https://ca.org1.example.com:11054",
+            "httpOptions": {
+                "verify": false
+            },
+            "tlsCACerts": {
+                "path": "./crypto/org5/tls/ca/ca.org5.example.com-cert.pem"
+            },
+            "registrar": [
+                {
+                    "enrollId": "Org5examplev2",
+                    "enrollSecret": "example123@"
+                }
+            ]
+        }
+    },
+    "orderers": {
+        "orderer1.orderer.example.com": {
+            "url": "grpcs://orderer1.orderer.example.com:7050",
+            "grpcOptions": {
+                "ssl-target-name-override": "orderer1.orderer.example.com"
+            },
+            "tlsCACerts": {
+                "path": "./crypto/orderer/orderer1/tls/ca.crt"
+            }
+        },
+        "orderer2.orderer.example.com": {
+            "url": "grpcs://orderer2.orderer.example.com:8050",
+            "grpcOptions": {
+                "ssl-target-name-override": "orderer2.orderer.example.com"
+            },
+            "tlsCACerts": {
+                "path": "./crypto/orderer/orderer2/tls/ca.crt"
+            }
+        },
+        "orderer3.orderer.example.com": {
+            "url": "grpcs://orderer3.orderer.example.com:9050",
+            "grpcOptions": {
+                "ssl-target-name-override": "orderer3.orderer.example.com"
+            },
+            "tlsCACerts": {
+                "path": "./crypto/orderer/orderer3/tls/ca.crt"
+            }
+        },
+        "orderer4.orderer.example.com": {
+            "url": "grpcs://orderer4.orderer.example.com:10050",
+            "grpcOptions": {
+                "ssl-target-name-override": "orderer4.orderer.example.com"
+            },
+            "tlsCACerts": {
+                "path": "./crypto/orderer/orderer4/tls/ca.crt"
+            }
+        },
+        "orderer5.orderer.example.com": {
+            "url": "grpcs://orderer5.orderer.example.com:11050",
+            "grpcOptions": {
+                "ssl-target-name-override": "orderer5.orderer.example.com"
+            },
+            "tlsCACerts": {
+                "path": "./crypto/orderer/orderer5/tls/ca.crt"
+            }
+        }
+    }
+}
