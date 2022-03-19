@@ -23,6 +23,10 @@ network_config.json
 Instantiate and connect to a gateway
 ```shell script
 
+    const walletPath = await getWallets(num);
+
+    const wallet = await buildWallet(Wallets, walletPath);
+
     let org = request.user.org;
 
     let num = Number(org.match(/\d/g).join(""));
