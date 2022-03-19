@@ -28,7 +28,7 @@ Instantiate and connect to a gateway
     let num = Number(org.match(/\d/g).join(""));
 
     const ccp = getCCP(num);
-    
+
     const gateway = new Gateway();
 
     await gateway.connect(ccp, {
@@ -39,7 +39,15 @@ Instantiate and connect to a gateway
 ```
 
 Access networks and contracts                          
+```shell script
 
+// Build a network instance based on the channel where the smart contract is deployed
+const network = await gateway.getNetwork(channelName);
+
+// Get the contract from the network.
+const contract = network.getContract(chaincodeName);
+
+```
 
 ### Smart Contract Development 40%                         
 Define smart contract class/construct
