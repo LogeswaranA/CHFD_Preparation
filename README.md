@@ -16,6 +16,10 @@ Select and manage identity from a wallet
 ### Network Configuration 8 %                         
 Create and use connection profiles
 
+```shell script
+network_config.json
+```
+
 Instantiate and connect to a gateway
 
 Access networks and contracts                          
